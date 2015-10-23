@@ -8,14 +8,10 @@ public class Subject {
 	
 	
 	public Subject() {
-		super();
-		this.name = "Something";
-		this.material = null;
-		this.volume = 0;
+		this("Something",null,0);
 	}
 	
 	public Subject(final String name, Material material, double volume) {
-		super();
 		this.name = name;
 		this.material = material;
 		this.volume = volume;
@@ -38,8 +34,8 @@ public class Subject {
 	}
 	
 	public double getMass() {
-		double mass=volume*material.getDensity();
-		return mass;
+		double subjectMass=volume*material.getDensity();
+		return subjectMass;
 		
 	}
 
@@ -47,8 +43,7 @@ public class Subject {
 	public String toString() {
 		
 		return name+";"+
-				material.getName()+";"+
-				String.format("%1$.1f", material.getDensity())+";"+
+				material+";"+
 				String.format("%1$.2f", volume)+ ";"+
 				String.format("%1$.1f", getMass());
 		

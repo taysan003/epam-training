@@ -4,15 +4,12 @@ import by.gsu.epamlab.Subject;
 public class Runner {
 
 	public static void main(String[] args) {
-		
-		final Material steel=new Material("steel",7850);
-		final Material copper=new Material("copper",8500);
-		
-		Subject wire=new Subject("wire",steel,0.03);
+
+		Subject wire=new Subject("wire",Material.STEEL,0.03);
 
 		System.out.println(wire);
 
-		wire.setMaterial(copper);
+		wire.setMaterial(Material.COPPER);
 
 		System.out.println(wire.getName()+" mass is "+wire.getMass());
 
