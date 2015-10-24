@@ -8,9 +8,7 @@ import java.util.Scanner;
 
 public class Runner {
 
-	private static final String COMMODITY="Something";
-	private static final int PRICE=50000;
-	final static String FILE_PATH="src/in.txt";
+	private final static String FILE_PATH="src/in.txt";
 	private static Purchase[] purchases=null;
 
 	public static void main(String[] args) {
@@ -48,7 +46,7 @@ public class Runner {
 
 			printPurchases(purchases);
 
-			Purchase forBinarySearch=new Purchase("",0,5,0,null);
+			Purchase forBinarySearch=new Purchase(5,0,null);
 
 			int reqPurchase=Arrays.binarySearch(purchases,forBinarySearch);
 
@@ -102,7 +100,7 @@ public class Runner {
                 int numberUnit=scanner.nextInt();
                 int discount=scanner.nextInt();
                 int weekDay=scanner.nextInt();
-                purchases[index]=new Purchase(COMMODITY,PRICE,numberUnit,discount,WEEK_DAY.getDay(weekDay));
+                purchases[index]=new Purchase(numberUnit,discount,WEEK_DAY.getDay(weekDay));
                 index++;
             }
 		}
@@ -111,7 +109,7 @@ public class Runner {
 
 	private static void printPurchases(Purchase[] purchases)
 	{
-		System.out.println("Commodity name "+COMMODITY +", price="+PRICE);
+		System.out.println("Commodity name "+Purchase.COMMODITY +", price="+Purchase.PRICE);
 		for (Purchase purchase:purchases)
 		{
 			System.out.println(purchase.toString());
