@@ -7,10 +7,10 @@ public class Purchase implements Comparable<Purchase>
     private final int price;
     private int numberUnit;
     private int discount;
-    private int weekDay;
+    private WEEK_DAY weekDay;
 
 
-    public Purchase(String commodity, int price, int numberUnit, int discount, int weekDay)
+    public Purchase(String commodity, int price, int numberUnit, int discount, WEEK_DAY weekDay)
     {
         this.commodity = commodity;
         this.price = price;
@@ -20,7 +20,7 @@ public class Purchase implements Comparable<Purchase>
     }
     public Purchase()
     {
-        this("Somthing",0,0,0,0);
+        this("Somthing",0,0,0,null);
     }
 
     public int getNumberUnit()
@@ -43,12 +43,12 @@ public class Purchase implements Comparable<Purchase>
         this.discount = discount;
     }
 
-    public int getWeekDay()
+    public WEEK_DAY getWeekDay()
     {
         return weekDay;
     }
 
-    public void setWeekDay(int weekDay)
+    public void setWeekDay(WEEK_DAY weekDay)
     {
         this.weekDay = weekDay;
     }

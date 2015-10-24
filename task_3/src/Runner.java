@@ -23,18 +23,18 @@ public class Runner {
 
 			final int PURCHASE_NUMBER = getPurchases(scanner);
 
-			printPurchases();
+			printPurchases(purchases);
 
 			int totalCost=0;
 			int totalCostMonday=0;
 			int maxCost=0;
-			int dayMaxCost=0;
+			WEEK_DAY dayMaxCost=null;
 
 			for(Purchase purchase:purchases)
 			{
 				totalCost+=purchase.getCost();
 
-				if(purchase.getWeekDay()==1)
+				if(purchase.getWeekDay()==WEEK_DAY.MONDAY)
 				{
 					totalCostMonday+=purchase.getCost();
 				}
@@ -46,16 +46,16 @@ public class Runner {
 			}
 			Arrays.sort(purchases);
 
-			printPurchases();
+			printPurchases(purchases);
 
-			int reqPurchase=Arrays.binarySearch(purchases,new Purchase("",0,5,0,0));
+			Purchase forBinarySearch=new Purchase("",0,5,0,null);
+
+			int reqPurchase=Arrays.binarySearch(purchases,forBinarySearch);
 
 			if (PURCHASE_NUMBER!=0)
 			{
-				double meanCost=(double)(totalCost/PURCHASE_NUMBER);
-				WEEK_DAY weekDay=WEEK_DAY.SATURDAY;
-
-				printResult(String.format("%1$.2f",meanCost), weekDay.getDay(dayMaxCost),
+				double meanCost=totalCost/PURCHASE_NUMBER;
+				printResult(String.format("%1$.2f",meanCost), dayMaxCost.toString(),
 						Integer.toString(totalCostMonday), Integer.toString(reqPurchase));
 			}
 			else
@@ -72,7 +72,11 @@ public class Runner {
 		}
 		finally
 		{
-			scanner.close();
+
+			if (scanner!=null)
+			{
+				scanner.close();
+			}
 		}
 
 
@@ -90,19 +94,22 @@ public class Runner {
 	{
 		final  int PURCHASE_NUMBER=scanner.nextInt();
 		purchases=new Purchase[PURCHASE_NUMBER];
-		int index=0;
-		while (scanner.hasNext())
-        {
-            int numberUnit=scanner.nextInt();
-            int discount=scanner.nextInt();
-            int weekDay=scanner.nextInt();
-            purchases[index]=new Purchase(COMMODITY,PRICE,numberUnit,discount,weekDay);
-            index++;
-        }
+		if (PURCHASE_NUMBER!=0)
+		{
+			int index=0;
+			while (scanner.hasNext())
+            {
+                int numberUnit=scanner.nextInt();
+                int discount=scanner.nextInt();
+                int weekDay=scanner.nextInt();
+                purchases[index]=new Purchase(COMMODITY,PRICE,numberUnit,discount,WEEK_DAY.getDay(weekDay));
+                index++;
+            }
+		}
 		return PURCHASE_NUMBER;
 	}
 
-	private static void printPurchases()
+	private static void printPurchases(Purchase[] purchases)
 	{
 		System.out.println("Commodity name "+COMMODITY +", price="+PRICE);
 		for (Purchase purchase:purchases)
