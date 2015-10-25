@@ -16,6 +16,12 @@ public class Purchase implements Comparable<Purchase>
         this.discount = discount;
         this.weekDay = weekDay;
     }
+    public Purchase( int numberUnit, int discount, int weekDay)
+    {
+        this.numberUnit = numberUnit;
+        this.discount = discount;
+        this.weekDay = WEEK_DAY.values()[weekDay];
+    }
     public Purchase()
     {
         this(0,0,null);
