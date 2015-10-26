@@ -24,18 +24,19 @@ public class Runner
             Purchase maxPurchase=null;
             for(int index=0;index<PURCHASES_LENGTH;index++)
             {
-                purchases[index]=PurchaseFactory.getPurchase(scanner);
+                Purchase newPurchase=PurchaseFactory.getPurchase(scanner);
 
-                System.out.println(purchases[index]);
+                System.out.println(newPurchase);
 
-                if(purchases[index].getCost()>maxCost)
+                if(newPurchase.getCost()>maxCost)
                 {
-                    maxCost=purchases[index].getCost();
-                    maxPurchase=purchases[index];
+                    maxCost=newPurchase.getCost();
+                    maxPurchase=newPurchase;
                 }
 
-                if (index!=0 && !purchases[index].equals(purchases[index-1])){flag=false;}
+                if (flag && index!=0 && !newPurchase.equals(purchases[index - 1])){flag=false;}
 
+                purchases[index]=newPurchase;
 
             }
             System.out.println("Max cost purchase="+maxPurchase);
