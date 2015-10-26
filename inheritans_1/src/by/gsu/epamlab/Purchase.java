@@ -3,7 +3,7 @@ package by.gsu.epamlab;
 import java.util.Scanner;
 
 
-public class Purchase implements IPurchase
+public class Purchase
 {
     private String commodity;
     private int price;
@@ -72,17 +72,13 @@ public class Purchase implements IPurchase
     @Override
     public boolean equals(Object o)
     {
-       /* if (o.getClass()==this.getClass()&&super.equals(o))
-        {*/
-            Purchase purchase=(Purchase)o;
-            if(this.commodity.equals(purchase.getCommodity()) && this.price==purchase.getPrice())
-            {
-                return true;
-            }
-       // }
+        Purchase purchase=(Purchase)o;
+        if(this.commodity.equals(purchase.getCommodity()) && this.price==purchase.getPrice())
+        {
+            return true;
+        }
+
         return false;
-
-
     }
 
     protected String fieldToString()

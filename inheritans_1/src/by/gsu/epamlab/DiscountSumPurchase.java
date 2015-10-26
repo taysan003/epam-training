@@ -2,23 +2,23 @@ package by.gsu.epamlab;
 
 import java.util.Scanner;
 
-public class DiscountNumPurchase extends Purchase implements IPurchase
+public class DiscountSumPurchase extends Purchase
 {
     private int discount;
 
-    public DiscountNumPurchase(String commodity, int price, int number, int discount)
+    public DiscountSumPurchase(String commodity, int price, int number, int discount)
     {
         super(commodity, price, number);
         this.discount = discount;
     }
 
-    public DiscountNumPurchase()
+    public DiscountSumPurchase()
     {
         super();
         this.discount = 0;
     }
 
-    public DiscountNumPurchase(Scanner scanner)
+    public DiscountSumPurchase(Scanner scanner)
     {
         super(scanner);
 

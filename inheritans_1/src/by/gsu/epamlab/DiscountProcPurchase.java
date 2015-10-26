@@ -2,10 +2,10 @@ package by.gsu.epamlab;
 
 import java.util.Scanner;
 
-public class DiscountProcPurchase extends Purchase implements IPurchase
+public class DiscountProcPurchase extends Purchase
 {
     private double discount;
-    private final int DISCOUNT_RANGE=10;
+    private final static int DISCOUNT_RANGE=10;
 
     public DiscountProcPurchase(String commodity, int price, int number, int discount)
     {
