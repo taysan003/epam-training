@@ -24,15 +24,28 @@ public class Runner
             for(int index=0;index<PURCHASES_LENGHT;index++)
             {
                 purchases[index]=PurchaseFactory.getPurchase(scanner);
-                System.out.println(purchases[index]);
-            }
-            int maxCost=purchases[0].getCost();
-            //Purchase
-            for (int index=0;index<purchases.length;index++)
-            {
-                //if(pu)
 
             }
+            int maxCost=0;
+            boolean flag=true;
+            IPurchase maxPurchase=null;
+            for (int index=0;index<purchases.length;index++)
+            {
+                System.out.println(purchases[index]);
+
+                if(purchases[index].getCost()>maxCost)
+                {
+                    maxCost=purchases[index].getCost();
+                    maxPurchase=purchases[index];
+                }
+                if (index!=0)
+                {
+                    if(!purchases[index].equals(purchases[index-1])){flag=false;}
+                }
+
+            }
+            System.out.println("Max cost purchase="+maxPurchase);
+            System.out.println("All purchases are equal is "+flag);
 
         } catch (FileNotFoundException e)
         {

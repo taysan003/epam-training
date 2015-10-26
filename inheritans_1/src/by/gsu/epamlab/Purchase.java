@@ -23,7 +23,7 @@ public class Purchase implements IPurchase
 
     public Purchase(Scanner scanner)
     {
-        this.commodity = scanner.next();
+        this.commodity = scanner.next().trim();
         this.price = scanner.nextInt();
         this.number = scanner.nextInt();
     }
@@ -72,14 +72,14 @@ public class Purchase implements IPurchase
     @Override
     public boolean equals(Object o)
     {
-        if (o.getClass()==this.getClass()&&super.equals(o))
-        {
+       /* if (o.getClass()==this.getClass()&&super.equals(o))
+        {*/
             Purchase purchase=(Purchase)o;
             if(this.commodity.equals(purchase.getCommodity()) && this.price==purchase.getPrice())
             {
                 return true;
             }
-        }
+       // }
         return false;
 
 

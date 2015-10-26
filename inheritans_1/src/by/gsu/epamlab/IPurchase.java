@@ -4,5 +4,4 @@ public interface IPurchase
 {
     int getCost();
 
-    String toString();
 }
