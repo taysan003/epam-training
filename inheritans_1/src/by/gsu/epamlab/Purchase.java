@@ -2,10 +2,8 @@ package by.gsu.epamlab;
 
 import java.util.Scanner;
 
-/**
- * Created by User on 25/10/2015.
- */
-public class Purchase
+
+public class Purchase implements IPurchase
 {
     private String commodity;
     private int price;
@@ -25,7 +23,7 @@ public class Purchase
 
     public Purchase(Scanner scanner)
     {
-        this.commodity = scanner.nextLine();
+        this.commodity = scanner.next();
         this.price = scanner.nextInt();
         this.number = scanner.nextInt();
     }
@@ -68,7 +66,7 @@ public class Purchase
     @Override
     public String toString()
     {
-        return commodity +";"+ price +";"+ number+ ";"+getCost();
+        return fieldToString()+ ";"+getCost();
     }
 
     @Override
@@ -85,5 +83,10 @@ public class Purchase
         return false;
 
 
+    }
+
+    protected String fieldToString()
+    {
+        return commodity+";"+number+";"+price;
     }
 }

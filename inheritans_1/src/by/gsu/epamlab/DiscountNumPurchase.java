@@ -2,7 +2,7 @@ package by.gsu.epamlab;
 
 import java.util.Scanner;
 
-public class DiscountNumPurchase extends Purchase
+public class DiscountNumPurchase extends Purchase implements IPurchase
 {
     private int discount;
 
@@ -21,6 +21,7 @@ public class DiscountNumPurchase extends Purchase
     public DiscountNumPurchase(Scanner scanner)
     {
         super(scanner);
+
         discount=scanner.nextInt();
     }
 
@@ -28,5 +29,12 @@ public class DiscountNumPurchase extends Purchase
     public int getCost()
     {
         return (getPrice()-discount)*getNumber();
+    }
+
+    @Override
+    public String toString()
+    {
+        return fieldToString()+ ";"+discount +";"+getCost();
+
     }
 }
