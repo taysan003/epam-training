@@ -31,10 +31,9 @@ public class DiscountSumPurchase extends Purchase
         return (getPrice()-discount)*getNumber();
     }
 
-    @Override
-    public String toString()
-    {
-        return fieldToString()+ ";"+discount +";"+getCost();
 
+    protected String fieldToString()
+    {
+        return super.fieldToString()+";"+discount;
     }
 }

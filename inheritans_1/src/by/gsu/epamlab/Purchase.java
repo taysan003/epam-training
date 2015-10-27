@@ -72,7 +72,10 @@ public class Purchase
     @Override
     public boolean equals(Object o)
     {
-        Purchase purchase=(Purchase)o;
+        if(!(o instanceof Purchase)){return false;}
+
+        Purchase purchase =(Purchase)o;
+
         if(this.commodity.equals(purchase.getCommodity()) && this.price==purchase.getPrice())
         {
             return true;

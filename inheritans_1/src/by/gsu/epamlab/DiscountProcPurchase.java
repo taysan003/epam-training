@@ -29,22 +29,16 @@ public class DiscountProcPurchase extends Purchase
     public int getCost()
     {
         int number = getNumber();
-        int totalCost;
+        int totalCost=super.getCost();
         if (number > DISCOUNT_RANGE)
         {
-            totalCost = (int)(super.getCost() * (1 - discount / 100));
-        }
-        else
-        {
-            totalCost=super.getCost();
+            totalCost *=  (1 - discount / 100);
         }
         return totalCost;
     }
 
-    @Override
-    public String toString()
+    protected String fieldToString()
     {
-        return fieldToString()+ ";"+discount +";"+getCost();
-
+        return super.fieldToString()+";"+discount;
     }
 }
