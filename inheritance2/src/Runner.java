@@ -24,11 +24,19 @@ public class Runner
         printPurchases(purchases);
         System.out.println("Minimum cost=" + purchases[purchases.length - 1].getCost());
 
-        AbstractPurchase purchaseForEqual=new DiscountSumPurchase(new Commodity("",54000),1,0);
+        AbstractPurchase purchaseForEqual=new DiscountSumPurchase(new Commodity("",23000),1,0);
 
         int reqIsEqual=Arrays.binarySearch(purchases,purchaseForEqual);
-        if(reqIsEqual>=0){System.out.println(purchases[reqIsEqual]);}
 
+        if(reqIsEqual>=0)
+        {
+            purchaseForEqual=purchases[reqIsEqual];
+        }
+        else
+        {
+            purchaseForEqual=null;
+        }
+        System.out.println("Purchase with cost=53000 is "+purchaseForEqual);
 
 
 
