@@ -5,9 +5,9 @@ import java.util.Scanner;
 public class DiscountProcPurchase extends Purchase
 {
     private double discount;
-    private final static int DISCOUNT_RANGE=10;
+    private final int DISCOUNT_RANGE=10;
 
-    public DiscountProcPurchase(String commodity, int price, int number, int discount)
+    public DiscountProcPurchase(String commodity, int price, int number, double discount)
     {
         super(commodity, price, number);
         this.discount = discount;
@@ -22,7 +22,7 @@ public class DiscountProcPurchase extends Purchase
     public DiscountProcPurchase(Scanner scanner)
     {
         super(scanner);
-        discount=scanner.nextInt();
+        discount=scanner.nextDouble();
     }
 
     @Override
