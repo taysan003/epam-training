@@ -28,11 +28,11 @@ public class DiscountProcPurchase extends AbstractPurchase
         this.discount = discount;
     }
 
-    public Commodity getCommodity()
+    @Override
+    public String getStringDiscount()
     {
-        return commodity;
+        return Double.toString(discount);
     }
-
 
     @Override
     public int getCost()
@@ -46,17 +46,4 @@ public class DiscountProcPurchase extends AbstractPurchase
         return totalCost/1000*1000;
     }
 
-
-
-    @Override
-    public int compareTo(AbstractPurchase purchase)
-    {
-        return purchase.getCost()-this.getCost();
-    }
-
-    @Override
-    public String toString()
-    {
-        return number+";"+discount+";"+getCost();
-    }
 }

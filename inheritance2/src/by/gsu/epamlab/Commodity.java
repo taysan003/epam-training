@@ -7,7 +7,7 @@ public class Commodity
 
     public Commodity()
     {
-        this("",0);
+        this(null,0);
     }
 
     public Commodity(String name, int price)
