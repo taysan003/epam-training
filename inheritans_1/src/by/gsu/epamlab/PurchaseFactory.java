@@ -1,21 +1,23 @@
 package by.gsu.epamlab;
 import java.util.Scanner;
 
-public enum PurchaseFactory
+public class PurchaseFactory
 {
+    private enum PurchaseType
+    {
 
         SIMPLY
-            {
-                @Override
-               public Purchase getPurchase(Scanner scanner)
                 {
-                    return new Purchase(scanner);
-                }
-            },
+                    @Override
+                     Purchase getPurchase(Scanner scanner)
+                    {
+                        return new Purchase(scanner);
+                    }
+                },
         DISCOUNT_SUM
                 {
                     @Override
-                    public Purchase getPurchase(Scanner scanner)
+                     Purchase getPurchase(Scanner scanner)
                     {
                         return new DiscountSumPurchase(scanner);
                     }
@@ -23,12 +25,20 @@ public enum PurchaseFactory
         DISCOUNT_PERCENT
                 {
                     @Override
-                   public Purchase getPurchase(Scanner scanner)
+                     Purchase getPurchase(Scanner scanner)
                     {
                         return new DiscountProcPurchase(scanner);
                     }
                 };
-       public abstract Purchase getPurchase(Scanner scanner);
 
+         abstract Purchase getPurchase(Scanner scanner);
 
+    }
+
+    public static Purchase getPurchase(Scanner scanner)
+    {
+        String readType=scanner.next();
+        PurchaseType purchaseType= PurchaseType.valueOf(readType);
+        return purchaseType.getPurchase(scanner);
+    }
 }

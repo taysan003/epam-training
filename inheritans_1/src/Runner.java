@@ -14,20 +14,20 @@ public class Runner
         final String FILE_NAME="src/in.txt";
         final int PURCHASES_LENGTH=6;
 
-        Purchase[] purchases;
         Scanner scanner=null;
         try
         {
             scanner=new Scanner(new FileReader(FILE_NAME));
-            purchases=new Purchase[PURCHASES_LENGTH];
+            Purchase[] purchases=new Purchase[PURCHASES_LENGTH];
+
             int maxCost=0;
             boolean isEqual=true;
             Purchase maxPurchase=null;
+
             for(int index=0;index<PURCHASES_LENGTH;index++)
             {
-                String selectType=scanner.next();
-                PurchaseFactory select= PurchaseFactory.valueOf(selectType);
-                Purchase newPurchase=select.getPurchase(scanner);
+
+                Purchase newPurchase=PurchaseFactory.getPurchase(scanner);
 
 
                 System.out.println(newPurchase);
@@ -39,6 +39,7 @@ public class Runner
                 }
 
                 purchases[index]=newPurchase;
+
                 if (isEqual){isEqual=newPurchase.equals(purchases[0]);}
 
 
