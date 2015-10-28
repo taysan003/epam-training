@@ -32,7 +32,7 @@ public class DiscountTransportPurchase extends AbstractPurchase
     public int getCost()
     {
         int totalCost=commodity.getPrice()*number;
-        totalCost+=transport/1000*1000;
-        return totalCost;
+        totalCost+=transport;
+        return totalCost/1000*1000;
     }
 }
