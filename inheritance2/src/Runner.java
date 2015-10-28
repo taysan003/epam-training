@@ -2,9 +2,7 @@ import by.gsu.epamlab.*;
 
 import java.util.Arrays;
 
-/**
- * Created by User on 27/10/2015.
- */
+
 public class Runner
 {
     public static void main(String[] args)
