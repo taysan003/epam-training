@@ -49,7 +49,7 @@ public class Runner
                     }
                     else
                     {
-                        badRow++;
+                        badRow++;//counter bar row in properties file
                     }
                 }
                 else
