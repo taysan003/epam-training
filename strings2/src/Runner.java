@@ -9,20 +9,21 @@ public class Runner
     {
         final String FILE_NAME="in";
         final String SEPARATOR=";";
-        final String PATTERN_FOR_INDEX="(.*)(index)([1-9][0-9]*)$";
+        final String VALUE="value";
+        final String ERROR_LINE="Error-line = ";
+        final String PATTERN_IS_INDEX="(\\s)*index.*";
+        final String PATTERN_FOR_INDEX_INDEX="(\\s)*(index)([1-9][0-9]*)$";
         final String PATTERN_FOR_INDEX_VALUE="([1-9][0-9]*)";
-        final String PATTERN_IS_INDEX=".*index.*";
-        final String PATTERN_IS_VALUE=".*values.*";
 
         int badRow=0;
+        double result=0;
         StringBuilder valueNumber=new StringBuilder();
-        StringBuilder valueString=new StringBuilder();
 
 
-        Pattern patternIndex=Pattern.compile(PATTERN_FOR_INDEX);
+
+        Pattern patternIndex=Pattern.compile(PATTERN_FOR_INDEX_INDEX);
         Pattern patternValue=Pattern.compile(PATTERN_FOR_INDEX_VALUE);
         Pattern patternIsIndex=Pattern.compile(PATTERN_IS_INDEX);
-        Pattern isValue=Pattern.compile(PATTERN_IS_VALUE);
 
         ResourceBundle resourceBundle=ResourceBundle.getBundle(FILE_NAME);
         Enumeration<String> keys=resourceBundle.getKeys();
@@ -57,10 +58,22 @@ public class Runner
                 }
             }
 
+        }
+        for(String valueIndex:valueNumber.toString().split(SEPARATOR))
+        {
+            try
+            {
+                String valueString=resourceBundle.getString(VALUE+valueIndex).trim();
+
+                result+=Double.parseDouble(valueString);
+            }
+            catch (NumberFormatException | MissingResourceException e)
+            {
+                badRow++;
+            }
 
         }
-
-        System.out.println(valueNumber.toString());
-        System.out.println(badRow);
+        System.out.format(Locale.ENGLISH,"Sum = %1.3f\n", result);
+        System.out.println(ERROR_LINE+badRow);
     }
 }
